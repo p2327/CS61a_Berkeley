@@ -1,0 +1,54 @@
+STk> (define (sqrt x)
+(sqrt-iter 1 x))
+sqrt
+;; we want to calculate the square root of a number by defining a procedure that compares a guess (we assm this being always 1) to an arbitrary tolerance of 0.001
+;; Our starting guess is 1. The procedure sqrt of a number x is defined as the procedure that compares a guess for the square root of x to x within a tolerance of 0.001 -- that is, when the square of guess is close to x by less than 0.001 then that is our approximation of the square root 
+;; For example 3 squared is close enough to 9 so 3 is a good enough square root for the radican 9
+
+
+STk> (define (sqrt-iter guess x)
+(if (good-enough? guess x) guess
+(sqrt-iter (improve guess x) x))
+)
+sqrt-iter
+;; this procedure takes our guess and the radicand x (the number we are trying to find the square root of) and tests if the guess satisfies the good enough condition. If it does the procedure returns the guess, otherwise calls itself until good-enough? is satisfied.
+
+
+
+
+
+STk> (define (good-enough? guess x)
+(< (abs (- (square guess) x)) 0.001))
+good-enough?
+;; we define good-enough? as a procedure that compares the square of the guess and x. Good-enough? is satisfied when the absolute value of the difference between square of guess and x is lower than 0.001.
+
+
+
+
+STk> (define (square x) 
+(* x x))
+square
+;; we next define the square procedure.
+
+
+
+
+
+STk> (define (improve guess x)
+average guess (/ x guess)) 
+)
+improve
+;; improve is a procedure that describe how do we find the new value of guess if the condition good-enough? is not satisfied. The new value of guess is the average between the old guess and the quotient of the radicand and the old guess. This is alike the Newton's method to find the square root of a number by iterative guessing between y and x/y. 
+
+
+
+STk> (define (average x y)
+(/ (+ x y) 2)) 
+average
+;; we next define the average procedure.
+
+
+
+STk> (sqrt 9)
+3.00009155413138
+;; it works!
