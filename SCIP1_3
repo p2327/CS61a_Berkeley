@@ -1,0 +1,84 @@
+Tk> '(This defines the sum of the squares among three numbers by looking at adding the biggest between two numbers x and y and the biggest between z and the smallest among x and y, that is, the remainder from before. We must define procedure max and min to determine which number is biggest and we do that through if procedures)
+
+
+STk> (define (bigsqsum x y z)
+(sqsum (max (x y) (max z (min x y)) 
+)))
+bigsqsum
+
+STk> (define (max x y)
+(if (> x y) x
+y))
+max
+
+STk> (define (min x y)
+(if (< x y) x
+y))
+min
+
+STk> (bigsqsum 7 8 9)
+
+*** Error:
+
+    eval: bad function in : (x y)
+
+Current eval stack:
+
+__________________
+
+  0    (x y)
+
+  1    (max (x y) (max z (min x y)))
+
+  2    (sqsum (max (x y) (max z (min x y))))
+
+STk> (max 5 6)
+6
+
+STk> (min 5 6)
+5
+
+STk> (sqsum 5 5)
+50
+
+STk> 
+
+Solved // x and y for max dont go between parentheses!
+
+
+STk> (define (bigsqsum x y z)
+(sqsum (max x y) (max z (min x y))))
+bigsqsum
+
+STk> (bigsqsum 7 8 9)
+145
+
+
+
+
+
+// (This other method takes the definition of max and uses it to ask a condition true or false. If the condition x bigger than y is true then it sums the square of x -- the first biggest -- and whichever is bigger among z and y. Otherwise it takes the square of y and the square of whatever is begger among the other two numbers z and y)
+
+// notice that cond follows (cond ((predicate) (expression))) and then else is aprocedure (else)
+
+// the general form of cond is (cond (<p> <e>) enclosed in parentheses where p and e can also be expressions themselves enclosed in parentheses such as (> x y) and (+ (sq y) (sq x)) 
+
+
+
+STk> (define (bigsqsumalt x y z)
+(cond ((> x y) (+ (sq x) (sq (max y z))))
+(else (+ (sq y) (sq (max x z))))
+)
+)
+bigsqsumalt
+
+
+
+STk> (define (sq x)
+(* x x))
+sq
+
+
+
+STk> (bigsqsumalt 7 8 9)
+145
