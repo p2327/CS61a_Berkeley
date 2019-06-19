@@ -30,7 +30,7 @@ def mergesort(seq):
     if len(seq) < 2:
         return seq
     else:
-        mid = len(seq)//2
+        mid = len(seq)//2 # the mid of seq
         left_sorted = mergesort(seq[:mid])
         right_sorted = mergesort(seq[mid:])
         return merge(left_sorted, right_sorted)
