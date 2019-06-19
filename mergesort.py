@@ -1,3 +1,12 @@
+def merge(lst1, lst2):
+    if lst1 == [] or lst2 == []:
+        return lst1 + lst2
+    elif lst1[0] <= lst2[0]:
+        return [lst1[0]] + merge(lst1[1:], lst2)
+    elif lst1[0] >= lst2[0]:
+        return [lst2[0]] + merge(lst1, lst2[1:])
+
+
 def mergesort(seq):
     """Mergesort algorithm.
     Mergesort is a type of sorting algorithm. 
