@@ -99,5 +99,25 @@ up_bound = upper_bound(test_i)
 
 
 
+def div_interval(x, y):
+    """Return the interval that contains the quotient of any value in x divided
+    by any value in y.
+
+    Division is implemented as the multiplication of x by the reciprocal of y.
+
+    >>> str_interval(div_interval(interval(-1, 2), interval(4, 8)))
+    '-0.25 to 0.5'
+    """
+    "*** YOUR CODE HERE ***"
+    assert upper_bound(y) and lower_bound(y) != 0, 'cannot divide by 0' 
+    reciprocal_y = interval(1//upper_bound(y), 1//lower_bound(y))
+    return mul_interval(x, reciprocal_y)
+
+int_x = interval(-2, 1)
+int_y = interval(2, 3)
+    
+test_div = div_interval(int_x, int_y)
+
+
 
 
