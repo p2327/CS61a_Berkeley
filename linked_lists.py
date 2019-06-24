@@ -15,3 +15,11 @@ def getitem_link(s, i):
 
 four = [1, [2, [3, [4, 'empty']]]] # four has index [0] = 1 and index [1] the rest [2...] 
 getitem_link(four, 1)
+
+
+# recursive implementation of getitem_link
+def getitem_link_recursive(s, i):
+        """Return the element at index i of linked list s."""
+        if i == 0:
+            return first(s)
+        return getitem_link_recursive(rest(s), i - 1)
