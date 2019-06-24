@@ -9,7 +9,8 @@ The mutable account data type below is implemented as a dictionary. It has a con
 check_balance, as well as functions to deposit or withdraw funds. Moreover, the local state of the account is 
 stored in the dictionary alongside the functions that implement its behavior."""
 
-
+# By storing the balance in the dispatch dictionary rather than in the account frame directly, 
+# we avoid the need for nonlocal statements in deposit and withdraw.
 
 def account(initial_balance):
     def deposit(amount):
