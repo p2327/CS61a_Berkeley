@@ -1,3 +1,8 @@
+""" A linked list is a pair containing the first element of the sequence (in this case 1) and the rest of the sequence 
+(in this case a representation of 2, 3, 4). The second element is also a linked list. 
+The rest of the inner-most linked list containing only 4 is 'empty', a value that represents an empty linked list."""
+
+
 def first(s):
     return s[0]
 def rest(s):
