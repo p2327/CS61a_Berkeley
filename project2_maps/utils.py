@@ -60,7 +60,10 @@ def enumerate(s, start=0):
     [[5, 'f'], [6, 'i'], [7, 'v'], [8, 'e']]
     """
     "*** YOUR CODE HERE ***"
+    return list(zip(range(start, len(s)), s)) # takes first element in range and pairs with first element in s
+    # range is up to the lenght of s (only argument given!)
 
+    
 def distance(pos1, pos2):
     """Return the Euclidean distance between POS1 and POS2, which are pairs.
 
