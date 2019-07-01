@@ -59,7 +59,7 @@ def make_withdraw(balance, password):
             return balance
     return withdraw
         
-wd = make_withdraw(260000, 'maripos')
+wd = make_withdraw(10, 'mck32nz1')
 
 """ wd(10, 'abdci')
 wd(10, 'aishie')
@@ -77,7 +77,7 @@ def make_joint(withdraw, oldpw, newpw):
     return joint # returns a function joint
 
 
-j = make_joint(wd, 'maripos', 'holla')
+j = make_joint(wd, 'mck32nz1', 'h0lla')
 
-j(10, 'bogo')
+j(10, 'b6g8')
     
