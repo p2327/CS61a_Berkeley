@@ -67,10 +67,9 @@ wd(10, 'ldfw39u2')"""
 
 def make_joint(withdraw, oldpw, newpw):
     account_test = withdraw(0, oldpw) # func stores newpw, oldpw values
-    if type(account_test) == str:
-        return account_test
-    def joint(amount, pw_attempt): # check if pw to withdrwa matches newpw
-        if pw_attempt == newpw:
+    if type(account_test) == str: # checks that oldpw is valid (it returned a balance) otherwise we have a string, i.e. error from make_withdraw like 'Insufficient funds'
+    def joint(amount, pw_attempt): 
+        if pw_attempt == newpw: # check if pw used to withdrwa matches newpw
             return withdraw(amount, oldpw) # if true it calls withdrwa on the oldpw, enabling withdrawing
         else:
             return withdraw(amount, pw_attempt) # if not it calls withdraw on a the wrong password
