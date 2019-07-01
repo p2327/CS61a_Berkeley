@@ -1,18 +1,16 @@
 # Question 1
 
 def make_withdraw(balance, password):
-    assert isinstance (password, str), 'Password is a string'
+    assert isinstance (password, str), 'Password must be a string'
     wrongpw = []
     def withdraw(amount, p):
-        nonlocal wrongpw
-        nonlocal password
-        nonlocal balance
+        nonlocal wrongpw, password, balance
         if p != password:
             wrongpw += [p]
             if len(wrongpw) >= 3: # using f string
                 return f'Your account is locked. Attempts: {" ".join(str(x) for x in wrongpw)}'
             return 'Wrong password'
-        if p == pw:
+        elif p == pw:
             if amount > balance:
                 return 'Insufficient funds'
             balance = balance - amount
