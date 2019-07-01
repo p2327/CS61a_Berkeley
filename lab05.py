@@ -101,3 +101,37 @@ def counter(message):
         else:
             words[i] += 1
     return words
+
+# Q3
+
+
+def counter(message):
+    """ Returns a dictionary of each word in message mapped
+    to the number of times it appears in the input string.
+
+    >>> x = counter('to be or not to be')
+    >>> x['to']
+    2
+    >>> x['be']
+    2
+    >>> x['not']
+    1
+    >>> y = counter('run forrest run')
+    >>> y['run']
+    2
+    >>> y['forrest']
+    1
+    """
+    word_list = message.split()
+    "*** YOUR CODE HERE ***"
+    words = {}
+    for i in word_list:
+        if i not in words:
+            words[i] = 1 # add all words as keys in a dict and count values
+        else:
+            words[i] += 1 # keep count if key appears in list
+    return words
+    
+x = counter('to be or not to be')
+
+resp = x['be']
