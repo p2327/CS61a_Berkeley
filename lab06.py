@@ -45,3 +45,47 @@ class Person(object):
     def start_again(self):
         full = ' '.join([self.previous[i] for i in range(len(self.previous))])
         return full
+
+    
+    
+class Account(object):
+    """A bank account that allows deposits and withdrawals.
+
+    >>> eric_account = Account('Eric')
+    >>> eric_account.deposit(1000000)   # depositing my paycheck for the week
+    1000000
+    >>> eric_account.transactions
+    [('deposit', 1000000)]
+    >>> eric_account.withdraw(100)      # buying dinner
+    999900
+    >>> eric_account.transactions
+    [('deposit', 1000000), ('withdraw', 100)]
+    """
+
+    interest = 0.02
+
+    def __init__(self, account_holder):
+        self.balance = 0
+        self.holder = account_holder
+        self.txs = []
+
+    def deposit(self, amount):
+        """Increase the account balance by amount and return the
+        new balance.
+        """
+        self.balance = self.balance + amount
+        self.txs += ('deposit', amount)
+        return self.balance
+
+    def withdraw(self, amount):
+        """Decrease the account balance by amount and return the
+        new balance.
+        """
+        if amount > self.balance:
+            return 'Insufficient funds'
+        self.balance = self.balance - amount
+        self.txs += ('withdraw', amount)
+        return self.balance
+    
+    def transactions(self):
+        return self.txs
