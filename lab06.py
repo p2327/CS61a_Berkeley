@@ -90,3 +90,17 @@ class Account(object):
     @property # let a zero call method behave like an attribute
     def transactions(self):
         return self.txs
+
+    
+class OdAccount(Account):
+    limit = 50
+
+    def withdraw(self, amount):
+        if self.overdrawn:
+            return 'Overdrawn limit reached. Please deposit'
+        self.balance -= amount
+        return self.balance
+        
+    @property
+    def overdrawn(self):
+        return self.balance <= -self.limit
