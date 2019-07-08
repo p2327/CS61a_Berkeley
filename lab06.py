@@ -87,5 +87,6 @@ class Account(object):
         self.txs += ('withdraw', amount)
         return self.balance
     
+    @property # let a zero call method behave like an attribute
     def transactions(self):
         return self.txs
