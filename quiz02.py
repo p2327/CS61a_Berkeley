@@ -63,6 +63,31 @@ coins = {2: 2, 3: 2, 4: 3, 5: 1}
 rem = make_change(8, coins)
 
 
+class ChangeMachine:
+    """A change machine holds a certain number of coins, initially all pennies.
+    The change method adds a single coin of some denomination X and returns a
+    list of coins that sums to X. The machine prefers to return the smallest
+    coins available. The total value in the machine never changes, and it can
+    always make change for any coin (perhaps by returning the coin passed in).
+
+    The coins attribute is a dictionary with keys that are positive integer
+    denominations and values that are positive integer coin counts.
+
+    >>> m = ChangeMachine(2)
+    >>> m.coins == {1: 2}
+    True
+    >>> m.change(2)
+    [1, 1]
+    >>> m.coins == {2: 1}
+    True
+    >>> m.change(2)
+    [2]
+    >>> m.coins == {2: 1}
+    True
+    >>> m.change(3)
+    [3]
+    >>> m.coins == {2: 1}
+    True
 
     >>> m = ChangeMachine(10) # 10 pennies
     >>> m.coins == {1: 10}
