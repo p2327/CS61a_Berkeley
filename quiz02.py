@@ -61,3 +61,63 @@ def make_change(amount, coins):
 coins = {2: 2, 3: 2, 4: 3, 5: 1}
 
 rem = make_change(8, coins)
+
+
+
+    >>> m = ChangeMachine(10) # 10 pennies
+    >>> m.coins == {1: 10}
+    True
+    >>> m.change(5) # takes a nickel & returns 5 pennies
+    [1, 1, 1, 1, 1]
+    >>> m.coins == {1: 5, 5: 1} # 5 pennies & a nickel remain
+    True
+    >>> m.change(3)
+    [1, 1, 1]
+    >>> m.coins == {1: 2, 3: 1, 5: 1}
+    True
+    >>> m.change(2)
+    [1, 1]
+    >>> m.change(2) # not enough 1's remaining; return a 2
+    [2]
+    >>> m.coins == {2: 1, 3: 1, 5: 1}
+    True
+    >>> m.change(8) # cannot use the 2 to make 8, so use 3 & 5
+    [3, 5]
+    >>> m.coins == {2: 1, 8: 1}
+    True
+    >>> m.change(1) # return the penny passed in (it's the smallest)
+    [1]
+    >>> m.change(9) # return the 9 passed in (no change possible)
+    [9]
+    >>> m.coins == {2: 1, 8: 1}
+    True
+    >>> m.change(10)
+    [2, 8]
+    >>> m.coins == {10: 1}
+    True
+
+    >>> m = ChangeMachine(9)
+    >>> [m.change(k) for k in [2, 2, 3]]
+    [[1, 1], [1, 1], [1, 1, 1]]
+    >>> m.coins == {1: 2, 2: 2, 3: 1}
+    True
+    >>> m.change(5) # Prefers [1, 1, 3] to [1, 2, 2] (more pennies)
+    [1, 1, 3]
+    >>> m.change(7)
+    [2, 5]
+    >>> m.coins == {2: 1, 7: 1}
+    True
+    """
+    def __init__(self, pennies):
+        self.coins = {1: pennies}
+
+    def change(self, coin):
+        """Return change for coin, removing the result from self.coins."""
+        "*** YOUR CODE HERE ***"
+        self.coins[coin] = 1 + self.coins.get(coin, 0)
+        result = make_change(coin, self.coins)
+        for coin in result:
+            count = self.coins.pop(coin) - 1
+            if count:
+                self.coins[coin] = count
+        return result
