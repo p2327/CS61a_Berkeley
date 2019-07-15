@@ -14,8 +14,13 @@ def find_closest(location, centroids):
     [2, 3]
     """
     "*** YOUR CODE HERE ***"
-    a = [distance(location, i) for i in centroids]
-    return min(a)
+    c = [(x, y) for x, y in centroids] # create tuples to use as key in dictionary
+    a = {k:distance(location, k) for k in c} # dictionary comprehension for each distance for each centorid
+    return min(a, key=lambda x: a[x]) # return the centroid for which distance is min
+
+"""
+a = [distance(location, i) for i in centroids]
+return min(a)
 
 
         cache = {}
@@ -46,7 +51,7 @@ return min(letters, key=lambda k: letters[k])
 
     a = {k:distance(location, k) for k in centroids}
     return min(a, key=lambda k: a[k])
-
+"""
 
 
 def group_by_first(pairs):
