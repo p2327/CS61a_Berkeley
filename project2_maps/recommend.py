@@ -84,6 +84,8 @@ def group_by_centroid(restaurants, centroids):
     No empty lists should appear in the result.
     """
     "*** YOUR CODE HERE ***"
+    return group_by_first([[find_closest(restaurant_location(restaurant), centroids),
+                            restaurant] for restaurant in restaurants])
 
 def find_centroid(restaurants):
     """Return the centroid of the locations of RESTAURANTS."""
