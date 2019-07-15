@@ -18,6 +18,10 @@ def find_closest(location, centroids):
     a = {k:distance(location, k) for k in c} # dictionary comprehension for each distance for each centroid tuple
     return min(a, key=lambda x: a[x]) # return the centroid key for which distance is min
 
+# alternative
+    return min(centroids, key =lambda centroid :distance(location, centroid))
+# returns the min val in centroids from a dict of centoid and the distance of each from loc
+
 """
 a = [distance(location, i) for i in centroids]
 return min(a)
