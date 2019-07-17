@@ -27,11 +27,28 @@ class Bag:
                 return self.skittles.pop() # pops the current index
         return 'No skittle of that color in bag'
         
+    def take_all(self):
+        for skittle in self.skittles:
+            print(skittle.color)
+        self.skittles = ()
+        
 s1 = Bag()
 
 # adding Skittle objects instances and instance attributes
 for color in ['red', 'blue', 'yellow']:
     s1.add_skittle(Skittle(color)) 
 
-ans = s1.take_color('yellow')
+ans = s1.take_all()
     
+    
+
+
+"""
+    def take_all(self):
+        out = [s for s in self.skittles]
+        for s in self.skittles:
+            self.skittles.remove(s)
+        del self.skittles[0]
+        print([s.color for s in out])
+        return out
+        """
