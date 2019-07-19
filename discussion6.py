@@ -114,3 +114,34 @@ tor.lose_life(9)
 tor._1up()
 
 test = tor.is_alive
+
+
+
+##################
+#################
+
+
+
+class Cat(Pet): # no need to repeat the __init__ 
+    lives = 9
+    
+    """
+    def __init__(self, name, owner, lives=9):
+        Pet.__init__(self, name, owner)
+        self.lives = lives"""
+        
+    def talk(self):
+        print('Meow')
+        
+    def lose_life(self, num):
+        self.lives -= num
+        if self.lives <= 0:
+            self.is_alive = False
+            print(f'{self.name} lost all his lives')
+        return self.lives
+            
+    def _1up(self):
+        self.lives += 1
+        self.is_alive = True
+        print('back from the dead!')
+        return self.lives
