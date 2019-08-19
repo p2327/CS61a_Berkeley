@@ -34,3 +34,28 @@ evens = IterCombiner(Naturals(), Naturals(), add)
 ans = next(evens)
 
 ans2 = next(evens)
+
+
+class FibIter(object):
+    def __init__(self):
+        self.pred = 0
+        self.curr = 1
+        
+    def __next__(self):
+        resp = self.pred
+        self.pred, self.curr = self.curr, self.pred + self.curr
+        return resp
+        
+    def __iter__(self):
+        return self
+
+
+flag = False
+count = 0
+while not flag:
+    fib = next(fibiter)
+    print(fib)
+    count += 1
+    if count == 5:
+        flag = True
+
