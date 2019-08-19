@@ -59,3 +59,25 @@ while not flag:
     if count == 5:
         flag = True
 
+        
+def perfect_squares():
+    start = 0
+    first = 1
+    while True:
+        yield start
+        start = first**2
+        first += 1
+        
+"""
+def perfect_squares():
+    start = 0
+    first = 1
+    while True:
+        if start == 0 or start == 1:
+            print(f'{start} is the square of {start}')
+        else:
+            print(f'{start} is the square of {first-1}')
+        yield start
+        start = first**2
+        first += 1
+""" 
